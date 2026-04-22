@@ -17,6 +17,7 @@ local filesystem dependency — can run inside the wot-api image unchanged.
 from __future__ import annotations
 
 import asyncio
+import datetime as dt
 import json
 import os
 import ssl
@@ -24,6 +25,18 @@ import sys
 import urllib.request
 
 import asyncpg
+
+
+def _parse_date(value):
+    """systems.json stores source_date as 'YYYY-MM-DD' string; DB wants date."""
+    if value is None:
+        return None
+    if isinstance(value, dt.date):
+        return value
+    try:
+        return dt.date.fromisoformat(str(value)[:10])
+    except ValueError:
+        return None
 
 RAW_BASE = "https://raw.githubusercontent.com/colaberry/WorldOfTaxonomy/main"
 SYSTEMS_URL = f"{RAW_BASE}/crosswalk-data/systems.json"
@@ -80,7 +93,7 @@ async def seed_system(conn: asyncpg.Connection, meta: dict, tree: list[dict]) ->
         meta.get("authority"),
         meta.get("url"),
         meta.get("source_url"),
-        meta.get("source_date"),
+        _parse_date(meta.get("source_date")),
         meta.get("data_provenance"),
         meta.get("license"),
     )
