@@ -25,12 +25,9 @@ import urllib.request
 
 import asyncpg
 
-RAW_BASE = (
-    "https://raw.githubusercontent.com/colaberry/WorldOfTaxonomy/main"
-    "/frontend/src/content"
-)
-SYSTEMS_URL = f"{RAW_BASE}/crosswalk/systems.json"
-TREE_URL = f"{RAW_BASE}/tree/{{sid}}.json"
+RAW_BASE = "https://raw.githubusercontent.com/colaberry/WorldOfTaxonomy/main"
+SYSTEMS_URL = f"{RAW_BASE}/crosswalk-data/systems.json"
+TREE_URL = f"{RAW_BASE}/tree-data/{{sid}}.json"
 
 MISSING_SYSTEM_IDS = [
     "esco_occupations",
