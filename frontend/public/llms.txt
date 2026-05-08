@@ -24,6 +24,10 @@ Full LLM reference: https://worldoftaxonomy.com/llms-full.txt
 - [Web Vocabularies - schema.org, SKOS, and Related Type Systems](https://worldoftaxonomy.com/guide/web-vocabularies)
 - [Regulatory and Compliance Standards - HIPAA, GDPR, NIST, ISO, OSHA, and 116 more](https://worldoftaxonomy.com/guide/regulatory-standards)
 - [Financial Systems - BICS, TRBC, ICB, GICS, FIBO, IFRS, CFI, Basel, and 50 more](https://worldoftaxonomy.com/guide/financial-systems)
+- [Academic and Research Classification - arXiv, MSC, JEL, Dewey, LCC, AACSB, ABET, EQF, SFIA, and more](https://worldoftaxonomy.com/guide/academic-research)
+- [Environmental Standards and Scales - BREEAM, LEED, IUCN, CITES, GHG Protocol, SDG, TNFD, Beaufort, Köppen, and more](https://worldoftaxonomy.com/guide/environmental-standards)
+- [Geographic Classification - ISO 3166, UN M.49, NUTS, FIPS, GeoNames, Köppen](https://worldoftaxonomy.com/guide/geographic-classification)
+- [Clinical Scales and Specialty Codes - APGAR, ASA, BMI, ICD variants, CPT, HCPCS, MS-DRG, RxNorm, NCI Thesaurus, FHIR, and more](https://worldoftaxonomy.com/guide/clinical-scales-and-codes)
 - [System Architecture and Data Flows](https://worldoftaxonomy.com/guide/architecture)
 
 ## API
