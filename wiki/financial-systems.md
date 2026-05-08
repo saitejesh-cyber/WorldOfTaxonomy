@@ -6,7 +6,7 @@
 
 ## What this layer is for
 
-Financial systems classify *capital, instruments, counterparties, transactions, and obligations* — orthogonal to general-purpose industry codes (NAICS, ISIC) and process frameworks (APQC PCF). A bank might be NAICS 5221 (Depository Credit Intermediation), Basel III IRB-eligible, ICB 30 (Financials), Refinitiv TRBC sector "Banking Services", and FIBO `BankingProductsAndServices` simultaneously — each anchor serves a different downstream surface.
+Financial systems classify *capital, instruments, counterparties, transactions, and obligations*  -  orthogonal to general-purpose industry codes (NAICS, ISIC) and process frameworks (APQC PCF). A bank might be NAICS 5221 (Depository Credit Intermediation), Basel III IRB-eligible, ICB 30 (Financials), Refinitiv TRBC sector "Banking Services", and FIBO `BankingProductsAndServices` simultaneously  -  each anchor serves a different downstream surface.
 
 This layer matters when downstream products need to:
 
@@ -55,7 +55,7 @@ These are deliberate competitors; none subsumes the others. SASB is special-purp
 | Authority | EDM Council |
 | License | MIT |
 
-FIBO is the largest financial system in WoT and the most semantically rigorous. It's an OWL ontology, not a flat code list — meaning each class has a formal definition, parent classes, and (often) restriction axioms. WoT ingests the class hierarchy across 7 modules:
+FIBO is the largest financial system in WoT and the most semantically rigorous. It's an OWL ontology, not a flat code list  -  meaning each class has a formal definition, parent classes, and (often) restriction axioms. WoT ingests the class hierarchy across 7 modules:
 
 | Module | What it covers |
 |--------|----------------|
@@ -226,12 +226,12 @@ The richest crosswalk surface today is between `gics_bridge`, `icb`, `bloomberg_
 
 ## What WoT does not host
 
-- **MSCI ESG Ratings** — proprietary methodology, not a published taxonomy.
+- **MSCI ESG Ratings**  -  proprietary methodology, not a published taxonomy.
 - **Bloomberg / Refinitiv detailed sub-industries** beyond what their public sector trees publish.
 - **Internal credit-rating scales** of individual banks (proprietary).
-- **OFR Financial Stability indicators** as a structured taxonomy — published as a dashboard, not a code list.
-- **Exchange-specific instrument lists** (NYSE listed equities, etc.) — these are operational data, not classification systems (per inclusion policy).
-- **Wikidata Q-numbers** for individual companies — entity registry above the size cap.
+- **OFR Financial Stability indicators** as a structured taxonomy  -  published as a dashboard, not a code list.
+- **Exchange-specific instrument lists** (NYSE listed equities, etc.)  -  these are operational data, not classification systems (per inclusion policy).
+- **Wikidata Q-numbers** for individual companies  -  entity registry above the size cap.
 
 ## Related reading
 
