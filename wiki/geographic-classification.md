@@ -1,6 +1,6 @@
 # Geographic Classification
 
-> **TL;DR:** WoT hosts 11 geographic classification systems anchoring the spatial axis: country codes (ISO 3166-1, UN M.49), subdivision codes (ISO 3166-2, EU NUTS 2021, US FIPS), feature classification (GeoNames Features), airport codes (ICAO Airport), climate zones (Köppen), and country development / income groupings (WB Income Groups, ADB Sector). Distinct from the country-link layer that maps a country to its applicable taxonomies — this page is the geography-as-classification view.
+> **TL;DR:** WoT hosts 11 geographic classification systems anchoring the spatial axis: country codes (ISO 3166-1, UN M.49), subdivision codes (ISO 3166-2, EU NUTS 2021, US FIPS), feature classification (GeoNames Features), airport codes (ICAO Airport), climate zones (Köppen), and country development / income groupings (WB Income Groups, ADB Sector). Distinct from the country-link layer that maps a country to its applicable taxonomies  -  this page is the geography-as-classification view.
 
 ---
 
@@ -48,7 +48,7 @@ Climate zones are not a coordinate but they classify *where* an observation can 
 | `wb_income` | 27 | World Bank | Country income classification (low / lower-middle / upper-middle / high; updated annually) |
 | `adb_sector` | 46 | ADB | Asian Development Bank sector taxonomy with country-region context |
 
-These are referenced from [Financial Systems](./financial-systems.md) as well — relevant when development-finance or DFI activity is being classified.
+These are referenced from [Financial Systems](./financial-systems.md) as well  -  relevant when development-finance or DFI activity is being classified.
 
 ## Decision tree
 
