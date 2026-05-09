@@ -19,8 +19,8 @@ running `pg_restore --clean` against prod.
 
 | Path | Trigger | What it loads | When you use it |
 |------|---------|---------------|-----------------|
-| **A. Auto ingest on merge** (`.github/workflows/auto-ingest-on-merge.yml`) | Automatic, on push to main that adds `world_of_taxonomy/ingest/<new>.py` | The brand-new system the PR introduced (`classification_system` + `classification_node` rows) | A PR adds a new ingester. Nothing to do; it runs itself. |
-| **B. Manual `ingest-prod.sh`** (this runbook) | Run from your laptop after a PR merges | Description backfills and structural reruns for systems that already exist | A PR adds or updates a `scripts/backfill_*_descriptions.py` script. |
+| **A. Auto ingest on merge** (`.github/workflows/auto-ingest-on-merge.yml`) | Automatic, on push to main that adds `world_of_taxonomy/ingest/<new>.py` | The brand-new system the PR introduced (`classification_system` + `classification_node` rows). Requires `secrets.DATABASE_URL` to be configured in the GH Actions repo secrets — without it, the workflow fails silently. | A PR adds a new ingester AND `DATABASE_URL` is configured in repo secrets. |
+| **B. Manual `ingest-prod.sh`** (this runbook) | Run from your laptop after a PR merges | Description backfills, structural reruns, AND structural ingesters whose data file is fetched at runtime by the manifest task (e.g. `fibo`, `schema_org`, `geonames_features`). Avoids the laptop-side cloud-sql-proxy + auth dance — runs inside the wot-ingest Cloud Run Job which has DB access via Secret Manager. | A PR adds or updates a `scripts/backfill_*_descriptions.py` script, OR adds a new ingester whose data downloads from a public URL (add a manifest entry that does `curl ... && python -m world_of_taxonomy ingest <target>`). |
 
 If Path A fails (check the Actions tab on the PR's merge commit), retry it with:
 
