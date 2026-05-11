@@ -13,9 +13,12 @@
     "     structural ingesters use INSERT ... ON CONFLICT DO NOTHING.",
     "  4. Within a task, ORDER scripts so any auto-downloading variant runs",
     "     FIRST (it populates data/<file>); file-based variants run AFTER",
-    "     and reuse the downloaded file. Some systems still need data files",
-    "     baked into the Docker image (data/* is .gitignored today). See",
-    "     docs/handover/runbooks/ingest-prod.md 'Data file dependencies'.",
+    "     and reuse the downloaded file. Tasks that need data files NOT in",
+    "     the Docker image (data/* is .gitignored) MUST start with a curl",
+    "     download step into data/ - see fibo/schema_org/geonames_features",
+    "     for the canonical pattern. Sources requiring registration (e.g.",
+    "     gs1_gpc) test for the file's presence and exit non-zero with a",
+    "     guidance message instead of trying to download.",
     "",
     "Usage from a developer laptop after a backfill PR merges:",
     "  ./scripts/ingest-prod.sh anzsic_2006 soc_2018 mesh",
@@ -136,5 +139,35 @@
 
   "un_m49": [
     "python scripts/backfill_un_m49_descriptions.py"
+  ],
+
+  "fibo": [
+    "mkdir -p data",
+    "curl -fsSL https://github.com/edmcouncil/fibo/archive/refs/heads/master.zip -o data/fibo-master.zip",
+    "python -m world_of_taxonomy ingest fibo"
+  ],
+
+  "schema_org": [
+    "mkdir -p data",
+    "curl -fsSL https://schema.org/version/latest/schemaorg-current-https.jsonld -o data/schemaorg-current-https.jsonld",
+    "python -m world_of_taxonomy ingest schema_org"
+  ],
+
+  "wordnet_nouns": [
+    "pip install --quiet --no-cache-dir nltk",
+    "python -c \"import nltk; nltk.download('wordnet', quiet=True)\"",
+    "DB_COMMAND_TIMEOUT=300 python -m world_of_taxonomy ingest wordnet_nouns"
+  ],
+
+  "geonames_features": [
+    "mkdir -p data",
+    "curl -fsSL https://download.geonames.org/export/dump/featureCodes_en.txt -o data/geonames_featureCodes_en.txt",
+    "python -m world_of_taxonomy ingest geonames_features"
+  ],
+
+  "gs1_gpc": [
+    "mkdir -p data",
+    "test -f \"data/GPC as of November 2025 v20251127 GB.xlsx\" || (echo 'ERROR: GS1 GPC requires manual download from https://gpc-browser.gs1.org/ (registration required); upload to repo data/ before running this task' >&2 && exit 2)",
+    "python -m world_of_taxonomy ingest gs1_gpc"
   ]
 }
